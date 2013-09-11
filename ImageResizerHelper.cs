@@ -161,6 +161,7 @@ namespace Dascoba.Umb.ImageResizer
         /// <returns></returns>
         internal static string GetOriginalUrl(int nodeId, ImageResizerPrevalueEditor imagePrevalueEditor)
         {
+#pragma warning disable 612,618
             Property imageProperty;
             var node = new CMSNode(nodeId);
             if (node.nodeObjectType == Document._objectType)
@@ -188,6 +189,7 @@ namespace Dascoba.Umb.ImageResizer
             {
                 return string.Empty;
             }
+#pragma warning restore 612,618
         }
     }
 }
