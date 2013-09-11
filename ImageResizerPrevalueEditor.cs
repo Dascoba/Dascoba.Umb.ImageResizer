@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using umbraco.cms.businesslogic.datatype;
@@ -157,7 +158,6 @@ namespace Dascoba.Umb.ImageResizer
                 var preValue = PreValue.MakeNew(_dataType.DataTypeDefinitionId, value);
                 preValue.Save();
             }
-            return;
         }
 
         #endregion
@@ -226,8 +226,8 @@ namespace Dascoba.Umb.ImageResizer
             base.OnLoad(e);
 
             PropertyAliasTextBox.Text = PropertyAlias;
-            MaxHeightTextBox.Text = MaxHeight.ToString();
-            MaxWidthTextBox.Text = MaxWidth.ToString();
+            MaxHeightTextBox.Text = MaxHeight.ToString(CultureInfo.InvariantCulture);
+            MaxWidthTextBox.Text = MaxWidth.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>

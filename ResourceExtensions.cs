@@ -44,9 +44,6 @@ namespace Dascoba.Umb.ImageResizer
                     page.Header.Controls.Add(
                         new LiteralControl(string.Format("<script type='text/javascript' src='{0}'></script>", page.Server.HtmlEncode(resourceUrl))));
                     break;
-
-                default:
-                    break;
             }
         }
     }

@@ -1,6 +1,4 @@
 ﻿using Umbraco.Core;
-using umbraco.BusinessLogic;
-using umbraco.businesslogic;
 using umbraco.cms.businesslogic;
 using umbraco.cms.businesslogic.media;
 using umbraco.cms.businesslogic.web;
@@ -18,6 +16,7 @@ namespace Dascoba.Umb.ImageResizer
     /// </summary>
     public class AfterSaveHandler : IApplicationEventHandler
     {
+#pragma warning disable 612,618
         /// <summary>
         /// Initializes a new instance of the <see cref="AfterSaveHandler"/> class.
         /// </summary>
@@ -68,6 +67,7 @@ namespace Dascoba.Umb.ImageResizer
                 ImageResizerHelper.ResizeImage(ImageResizerHelper.GetOriginalUrl(nodeId, prevalueEditor), prevalueEditor.MaxHeight, prevalueEditor.MaxHeight);
             }
         }
+#pragma warning restore 612,618
 
         #region Implementation of IApplicationEventHandler
 
@@ -77,7 +77,7 @@ namespace Dascoba.Umb.ImageResizer
         /// <param name="umbracoApplication"/><param name="applicationContext"/>
         public void OnApplicationInitialized(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Dascoba.Umb.ImageResizer
         /// <param name="umbracoApplication"/><param name="applicationContext"/>
         public void OnApplicationStarting(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Dascoba.Umb.ImageResizer
         /// <param name="umbracoApplication"/><param name="applicationContext"/>
         public void OnApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         #endregion

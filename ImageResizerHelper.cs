@@ -60,12 +60,17 @@ namespace Dascoba.Umb.ImageResizer
 
             // build new file name
             var newFileName = String.Format("{0}_{1}x{2}{3}", origFileNameWithoutExtension, width, height, origExtension);
-            var newFile = origFile.Replace(origFileNameWithExtension, newFileName);
+            if (origFileNameWithExtension != null)
+            {
+                var newFile = origFile.Replace(origFileNameWithExtension, newFileName);
 
-            // Resize Image
-            ResizeImage(origFile, newFile, width, height, true);
+                // Resize Image
+                ResizeImage(origFile, newFile, width, height, true);
+            }
 
-            return origUrl.Replace(origFileNameWithExtension, newFileName);
+            return origFileNameWithExtension != null 
+                ? origUrl.Replace(origFileNameWithExtension, newFileName) 
+                : null;
         }
 
         /// <summary>
@@ -131,7 +136,9 @@ namespace Dascoba.Umb.ImageResizer
 
                 newImage.Save(newFile);
             }
+// ReSharper disable EmptyGeneralCatchClause
             catch
+// ReSharper restore EmptyGeneralCatchClause
             {
             }
         }
