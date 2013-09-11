@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dascoba.Umb.ImageResizer</name>
+    </assembly>
+    <members>
+        <member name="T:Dascoba.Umb.ImageResizer.AfterSaveHandler">
+            <summary>
+            AfterSaveHandler
+            
+            Used when media is created by some other means besides the standard backoffice method
+            that creates a single media at a time. (i.e. via the API)
+            
+            Doesn't currently work since Umbraco only hits the AfterSave event on single items in the backoffice
+            
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.AfterSaveHandler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Dascoba.Umb.ImageResizer.AfterSaveHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.AfterSaveHandler.Document_AfterSave(umbraco.cms.businesslogic.web.Document,umbraco.cms.businesslogic.SaveEventArgs)">
+            <summary>
+            Handles the AfterSave event for Document
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:umbraco.cms.businesslogic.SaveEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.AfterSaveHandler.Media_AfterSave(umbraco.cms.businesslogic.media.Media,umbraco.cms.businesslogic.SaveEventArgs)">
+            <summary>
+            Handles the AfterSave event for Media
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:umbraco.cms.businesslogic.SaveEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.AfterSaveHandler.ProcessProperties(umbraco.cms.businesslogic.Content)">
+            <summary>
+            Processes the properties.
+            Will resize images when ImageResizer property is found
+            </summary>
+            <param name="node">The node.</param>
+        </member>
+        <member name="T:Dascoba.Umb.ImageResizer.ImageResizerHelper">
+            <summary>
+              ImageResizerHelper
+            </summary>
+        </member>
+        <member name="F:Dascoba.Umb.ImageResizer.ImageResizerHelper.DataTypeId">
+            <summary>
+              ImageResizer Guid
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerHelper.GetSizeString(System.String)">
+            <summary>
+            Gets the size string.
+            </summary>
+            <param name="imageUrl">The image URL.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerHelper.ResizeImage(System.String,System.Int32,System.Int32)">
+            <summary>
+              Resizes the image.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerHelper.ResizeImage(System.String,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+              Resizes the image.
+            </summary>
+            <param name = "origFile">The original file.</param>
+            <param name = "newFile">The new file.</param>
+            <param name = "maxWidth">Maximum Width.</param>
+            <param name = "maxHeight">Maximum Height.</param>
+            <param name = "resizeIfWider">if set to <c>true</c> [resize if wider].</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerHelper.GetOriginalUrl(System.Int32,Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor)">
+            <summary>
+              Gets the image property.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerHelper.CurrentNodeId">
+            <summary>
+            Gets the current node id.
+            </summary>
+            <value>The current node id.</value>
+        </member>
+        <member name="T:Dascoba.Umb.ImageResizer.ImageResizerDataEditor">
+            <summary>
+              This class is used for the actual datatype dataeditor, i.e. the control you will get in the content section of umbraco.
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerDataEditor.OnInit(System.EventArgs)">
+            <summary>
+              Raises the <see cref = "E:System.Web.UI.Control.Init" /> event.
+            </summary>
+            <param name = "e">An <see cref = "T:System.EventArgs" /> object that contains the event data.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerDataEditor.CreateChildControls">
+            <summary>
+              Called by the ASP.NET page framework to notify server controls that use composition-based implementation to create any child controls they contain in preparation for posting back or rendering.
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerDataEditor.Toggle(System.Boolean)">
+            <summary>
+            Toggles the specified property ok.
+            </summary>
+            <param name="propertyOk">if set to <c>true</c> [property ok].</param>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerDataEditor.PropertyAlias">
+            <summary>
+            Gets or sets the property alias.
+            </summary>
+            <value>The property alias.</value>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerDataEditor.ImageUrl">
+            <summary>
+              Gets or sets the color text.
+            </summary>
+            <value>The color text.</value>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerDataEditor.LabelText">
+            <summary>
+            Gets or sets the label text.
+            </summary>
+            <value>The label text.</value>
+        </member>
+        <member name="T:Dascoba.Umb.ImageResizer.ImageResizerDataType">
+            <summary>
+              This is basicly where you give the datatype it’s name and unique id. 
+              The name will show up in the rendercontrol dropdown of the edit datatype page.
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerDataType.#ctor">
+            <summary>
+              Initializes a new instance of the <see cref="N:Dascoba.Umb.ImageResizer"/> class.
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerDataType.DataEditorControl_OnSave(System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerDataType.ImageResizerDataEditorPreRender(System.Object,System.EventArgs)">
+            <summary>
+            Handles the PreRender event of the _colorPickerDataEditor control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerDataType.Id">
+            <summary>
+              Gets the datatype unique id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerDataType.DataTypeName">
+            <summary>
+              Gets the datatype unique id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerDataType.PrevalueEditor">
+            <summary>
+              Gets the prevalue editor.
+            </summary>
+            <value>The prevalue editor.</value>
+        </member>
+        <member name="T:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor">
+            <summary>
+              This class is used to setup the datatype settings. 
+              On save it will store these values (using the datalayer) in the database
+            </summary>
+        </member>
+        <member name="F:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.PropertyAliasTextBox">
+            <summary>
+            PropertyAliasTextBox
+            </summary>
+        </member>
+        <member name="F:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.MaxHeightTextBox">
+            <summary>
+              MaxHeightTextBox
+            </summary>
+        </member>
+        <member name="F:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.MaxWidthTextBox">
+            <summary>
+              MaxWidthTextBox
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.#ctor(umbraco.cms.businesslogic.datatype.BaseDataType)">
+            <summary>
+              Initializes a new instance of the <see cref="T:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor"/> class.
+            </summary>
+            <param name="dataType">Type of the data.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.GetPreValue(System.Int32)">
+            <summary>
+              Gets the pre value.
+            </summary>
+            <param name = "index">The index.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.UpdatePreValue(System.Int32,System.String)">
+            <summary>
+              Inserts the value.
+            </summary>
+            <param name = "index">The index.</param>
+            <param name = "value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.Save">
+            <summary>
+              Saves the prevalues to the Umbraco database.
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.OnInit(System.EventArgs)">
+            <summary>
+              Raises the <see cref = "E:System.Web.UI.Control.Init" /> event.
+            </summary>
+            <param name = "e">An <see cref = "T:System.EventArgs" /> object that contains the event data.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.CreateChildControls">
+            <summary>
+              Sets up the child controls.
+              Creates new instances of the Datatype Controls
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.OnLoad(System.EventArgs)">
+            <summary>
+              Raises the <see cref = "E:System.Web.UI.Control.Load" /> event.
+            </summary>
+            <param name = "e">The <see cref = "T:System.EventArgs" /> object that contains the event data.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.Render(System.Web.UI.HtmlTextWriter)">
+            <summary>
+              Sends server control content to a provided <see cref = "T:System.Web.UI.HtmlTextWriter" /> object, 
+              which writes the content to be rendered on the client.
+            </summary>
+            <param name = "writer">The <see cref = "T:System.Web.UI.HtmlTextWriter" /> object that receives the server control content.</param>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.PropertyAlias">
+            <summary>
+            Gets the property alias.
+            </summary>
+            <value>The property alias.</value>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.MaxHeight">
+            <summary>
+              Gets the height of the box.
+            </summary>
+            <value>The size of the box.</value>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.MaxWidth">
+            <summary>
+              Gets the width of the box.
+            </summary>
+            <value>The width of the box.</value>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.EditorPreValues">
+            <summary>
+              Gets the editor pre values.
+            </summary>
+            <value>The editor pre values.</value>
+        </member>
+        <member name="P:Dascoba.Umb.ImageResizer.ImageResizerPrevalueEditor.Editor">
+            <summary>
+              Gets the editor.
+            </summary>
+            <value>The editor.</value>
+        </member>
+        <member name="T:Dascoba.Umb.ImageResizer.PrevalueEditorExtensions">
+            <summary>
+              Extension methods for the Prevalue Editor
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.PrevalueEditorExtensions.AddPrevalueControls(System.Web.UI.ControlCollection,System.Web.UI.Control[])">
+            <summary>
+              Adds the prevalue controls.
+            </summary>
+            <param name = "collection">The collection.</param>
+            <param name = "controls">The controls.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.PrevalueEditorExtensions.AddPrevalueHeading(System.Web.UI.HtmlTextWriter,System.String)">
+            <summary>
+              Adds the prevalue row heading.
+            </summary>
+            <param name = "writer">The writer.</param>
+            <param name = "heading">The heading.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.PrevalueEditorExtensions.AddPrevalueRow(System.Web.UI.HtmlTextWriter,System.String,System.Web.UI.Control[])">
+            <summary>
+              Adds a new row to the Prevalue Editor.
+            </summary>
+            <param name = "writer">The HtmlTextWriter.</param>
+            <param name = "label">The label for the field.</param>
+            <param name = "controls">The controls for the field.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.PrevalueEditorExtensions.AddPrevalueRow(System.Web.UI.HtmlTextWriter,System.String,System.String,System.Web.UI.Control[])">
+            <summary>
+              Adds a new row to the Prevalue Editor, (with an optional description).
+            </summary>
+            <param name = "writer">The HtmlTextWriter.</param>
+            <param name = "label">The label for the field.</param>
+            <param name = "description">The description for the field.</param>
+            <param name = "controls">The controls for the field.</param>
+        </member>
+        <member name="T:Dascoba.Umb.ImageResizer.ResourceExtensions">
+            <summary>
+              Extension methods for embedded resources
+            </summary>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ResourceExtensions.AddResourceToClientDependency(System.Web.UI.Control,System.String,umbraco.cms.businesslogic.datatype.ClientDependencyType)">
+            <summary>
+              Adds an embedded resource to the ClientDependency output by name
+            </summary>
+            <param name = "ctl">The CTL.</param>
+            <param name = "resourceName">Name of the resource.</param>
+            <param name = "type">The type.</param>
+        </member>
+        <member name="M:Dascoba.Umb.ImageResizer.ResourceExtensions.AddResourceToClientDependency(System.Web.UI.Page,System.Type,System.String,umbraco.cms.businesslogic.datatype.ClientDependencyType,System.Int32)">
+            <summary>
+              Adds an embedded resource to the ClientDependency output by name
+            </summary>
+            <param name = "page">The Page to add the resource to</param>
+            <param name = "resourceContainer">The type containing the embedded resourcre</param>
+            <param name = "resourceName">Name of the resource.</param>
+            <param name = "type">The type.</param>
+            <param name = "priority">The priority.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dascoba.Umb.ImageResizer", "Dascoba.Umb.ImageResizer.csproj", "{F3923499-AC53-4803-96EE-CD9697E9904A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Umbraco Assemblies", "Umbraco Assemblies", "{EB59A526-8FB1-4E70-B6C3-0CC612F09A98}"
+	ProjectSection(SolutionItems) = preProject
+		bin\businesslogic.dll = bin\businesslogic.dll
+		bin\cms.dll = bin\cms.dll
+		bin\controls.dll = bin\controls.dll
+		bin\interfaces.dll = bin\interfaces.dll
+		bin\Umbraco.Core.dll = bin\Umbraco.Core.dll
+		bin\umbraco.DataLayer.dll = bin\umbraco.DataLayer.dll
+		bin\umbraco.dll = bin\umbraco.dll
+		bin\umbraco.providers.dll = bin\umbraco.providers.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.1.4", "6.1.4", "{4927BA8B-BFA4-4803-B613-D3F2B2A3B61B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3923499-AC53-4803-96EE-CD9697E9904A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3923499-AC53-4803-96EE-CD9697E9904A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3923499-AC53-4803-96EE-CD9697E9904A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3923499-AC53-4803-96EE-CD9697E9904A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4927BA8B-BFA4-4803-B613-D3F2B2A3B61B} = {EB59A526-8FB1-4E70-B6C3-0CC612F09A98}
+	EndGlobalSection
+EndGlobal
