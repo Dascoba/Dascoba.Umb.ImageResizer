@@ -42,7 +42,7 @@ namespace Dascoba.Umb.ImageResizer
         ///   Resizes the image.
         /// </summary>
         /// <returns></returns>
-        internal static string ResizeImage(string imageUrl, int maxHeight, int maxWidth)
+        internal static string ResizeImage(string imageUrl, int maxHeight, int maxWidth, string resizerAlias = "")
         {
             if (imageUrl == String.Empty) return String.Empty;
 
@@ -59,7 +59,16 @@ namespace Dascoba.Umb.ImageResizer
             var origExtension = Path.GetExtension(origFile);
 
             // build new file name
-            var newFileName = String.Format("{0}_{1}x{2}{3}", origFileNameWithoutExtension, width, height, origExtension);
+            string newFileName;
+            
+            if (string.IsNullOrEmpty(resizerAlias))
+            {
+                newFileName = String.Format("{0}_{1}x{2}{3}", origFileNameWithoutExtension, width, height, origExtension);
+            }
+            else
+            {
+                newFileName = String.Format("{0}_{1}{2}", origFileNameWithoutExtension, resizerAlias, origExtension);
+            }
             if (origFileNameWithExtension != null)
             {
                 var newFile = origFile.Replace(origFileNameWithExtension, newFileName);

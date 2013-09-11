@@ -1,5 +1,7 @@
 using System;
+using System.Web.UI;
 using System.Web.UI.WebControls;
+using umbraco.interfaces;
 using Image = System.Web.UI.WebControls.Image;
 
 namespace Dascoba.Umb.ImageResizer
@@ -34,23 +36,12 @@ namespace Dascoba.Umb.ImageResizer
         }
 
         /// <summary>
-        /// Gets or sets the label text.
-        /// </summary>
-        /// <value>The label text.</value>
-        public string LabelText
-        {
-            get { return _imageResizerLabel.Text; }
-            set { _imageResizerLabel.Text = value; }
-        }
-
-        /// <summary>
         ///   Raises the <see cref = "E:System.Web.UI.Control.Init" /> event.
         /// </summary>
         /// <param name = "e">An <see cref = "T:System.EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-
             EnsureChildControls();
         }
 
@@ -85,6 +76,7 @@ namespace Dascoba.Umb.ImageResizer
             if (propertyOk)
             {
                 _imageResizerImage.Visible = true;
+                _imageResizerLabel.Text = string.Format("<p>{0}</p>", ImageResizerHelper.GetSizeString(ImageUrl));
             }
             else
             {

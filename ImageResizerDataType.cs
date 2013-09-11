@@ -37,7 +37,7 @@ namespace Dascoba.Umb.ImageResizer
         /// <param name = "e">The <see cref = "System.EventArgs" /> instance containing the event data.</param>
         private void DataEditorControl_OnSave(EventArgs e)
         {
-            var prevalueEditor = (ImageResizerPrevalueEditor)PrevalueEditor;
+            var prevalueEditor = (ImageResizerPrevalueEditor) PrevalueEditor;
             var imageUrl = ImageResizerHelper.ResizeImage(ImageResizerHelper.GetOriginalUrl(ImageResizerHelper.CurrentNodeId, prevalueEditor), prevalueEditor.MaxHeight, prevalueEditor.MaxHeight);
 
             _imageResizerDataEditor.ImageUrl = imageUrl;
@@ -52,7 +52,7 @@ namespace Dascoba.Umb.ImageResizer
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ImageResizerDataEditorPreRender(object sender, EventArgs e)
         {
-            var prevalueEditor = (ImageResizerPrevalueEditor)PrevalueEditor;
+            var prevalueEditor = (ImageResizerPrevalueEditor) PrevalueEditor;
 
             _imageResizerDataEditor.PropertyAlias = prevalueEditor.PropertyAlias;
             _imageResizerDataEditor.ImageUrl = base.Data.Value.ToString();
@@ -60,10 +60,6 @@ namespace Dascoba.Umb.ImageResizer
             var propertyOk = ImageResizerHelper.GetOriginalUrl(ImageResizerHelper.CurrentNodeId, prevalueEditor) != string.Empty;
 
             _imageResizerDataEditor.Toggle(propertyOk);
-            if (propertyOk)
-            {
-                _imageResizerDataEditor.LabelText =string.Format("<p>{0}</p>", ImageResizerHelper.GetSizeString(_imageResizerDataEditor.ImageUrl));
-            }
         }
 
         #endregion
@@ -96,16 +92,6 @@ namespace Dascoba.Umb.ImageResizer
         {
             get { return _imageResizerPrevalueEditor ?? (_imageResizerPrevalueEditor = new ImageResizerPrevalueEditor(this)); }
         }
-
-        ///// <summary>
-        ///// Gets the render control.
-        ///// </summary>
-        ///// <value>The render control.</value>
-        //public new Control RenderControl
-        //{
-        //    get { return _imageResizerDataEditor ?? (base.RenderControl = _imageResizerDataEditor = new ImageResizerDataEditor()); }
-        //    set { base.RenderControl = value; }
-        //}
 
         #endregion
     }
